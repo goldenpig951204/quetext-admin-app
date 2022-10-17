@@ -98,7 +98,6 @@ const authMiddleware = async (req, res, next) => {
     if (!sess) {
         return res.status(400).end("Bad Request, please try again.");
     }
-    console.log(sess, userAgent, ipAddr)
     if (!isValidSess(sess, userAgent, ipAddr)) {
         return res.status(400).end("Session is invalid");
     }

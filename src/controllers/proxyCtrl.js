@@ -23,7 +23,6 @@ const createProxy = async (req, res) => {
     try {
         let proxy = req.body;
         let result = await proxyModel.create(proxy);
-        console.log("result", result);
         res.json(result);
     } catch (err) {
         if (err.code == 11000) {

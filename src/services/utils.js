@@ -9,6 +9,29 @@ const JSON_to_URLEncoded = (element,key,list) => {
     return list.join('&');
 }
 
+const extractCookies = (cookies) => {
+    let allCookies = '';
+    let counter = 1;
+
+    if (typeof cookies !== 'object'){
+        return '';
+    }
+
+    const length = cookies.length;
+    for (let i = 0; i < length; i++) {
+        let currentCookie = cookies[i];
+        currentCookie = currentCookie.replace(/;\s.+/i, "");
+        if (i === length - 1) {
+            allCookies += currentCookie + ";";
+        } else {
+            allCookies += currentCookie + "; ";
+        }
+        counter++;
+    }
+
+    return allCookies;
+};
 module.exports = {
-    JSON_to_URLEncoded
+    JSON_to_URLEncoded,
+    extractCookies
 }
